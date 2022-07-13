@@ -1,9 +1,12 @@
 //transport @ header to <h1>header</h1>
 //https://github.com/mqyqingfeng/Blog/issues/254#:~:text=%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%A3%E7%A0%81%E3%80%82-,%E5%AE%9E%E4%BE%8B%E8%AE%B2%E8%A7%A3,-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%88%91%E4%BB%AC
 
+import StateBlock from "markdown-it/lib/rules_block/state_block";
+import Token from "markdown-it/lib/token";
+
 function stringReplace(md) {
-  md.block.ruler.before('paragraph', 'myplugin', function (state, startLine, endLine) {
-    var ch, level, tmp, token,
+  md.block.ruler.before('paragraph', 'myplugin', function (state: StateBlock, startLine: number, endLine: number) {
+    let ch: number, token: Token,
       pos = state.bMarks[startLine] + state.tShift[startLine],
       max = state.eMarks[startLine];
     ch = state.src.charCodeAt(pos);
